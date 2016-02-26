@@ -29,11 +29,11 @@ program
 program.on('--help', function () {
   console.log('  Examples:')
   console.log()
-  console.log(chalk.gray('    # create a new project with an official template'))
-  console.log('    $ vue init webpack my-project')
+  console.log(chalk.gray('    # create a new theme from the default template'))
+  console.log('    $ vuetober init my-project')
   console.log()
-  console.log(chalk.gray('    # create a new project straight from a github template'))
-  console.log('    $ vue init username/repo my-project')
+  console.log(chalk.gray('    # create a new theme from a github template'))
+  console.log('    $ vuetober init username/repo my-project')
   console.log()
 })
 
@@ -56,10 +56,16 @@ process.on('exit', function () {
 /**
  * Settings.
  */
-
-var template = program.args[0]
+var template;
+var rawName;
+if (program.args.length === 1) {
+  template = 'scottbedard/oc-vuetober-theme';
+  rawName = program.args[0]
+} else {
+  template = program.args[0];
+  rawName = program.args[1];
+}
 var hasSlash = template.indexOf('/') > -1
-var rawName = program.args[1]
 var inPlace = !rawName || rawName === '.'
 var name = inPlace ? path.relative('../', process.cwd()) : rawName
 var dir = program.directory
@@ -98,11 +104,7 @@ function run () {
       logger.success('Generated "%s".', name)
     })
   } else {
-    // use official templates
-    if (!hasSlash) {
-      template = 'vuejs-templates/' + template
-    }
-    // download and generate
+    // download and generate template
     var tmp = '/tmp/vue-template-' + uid()
     var spinner = new Spinner('downloading template')
     spinner.start()

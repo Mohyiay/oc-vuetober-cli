@@ -1,17 +1,17 @@
 {
-  "name": "vue-cli",
-  "version": "1.4.0",
-  "description": "A simple CLI for scaffolding Vue.js projects.",
+  "name": "oc-vuetober-cli",
+  "version": "0.1.0",
+  "description": "A simple CLI for scaffolding Vuetober themes.",
   "preferGlobal": true,
   "bin": {
-    "vue": "bin/vue"
+    "vuetober": "bin/vuetober"
   },
   "scripts": {
     "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vue-cli.git"
+    "url": "git+https://github.com/scottbedard/oc-vuetober-cli.git"
   },
   "keywords": [
     "vue",
